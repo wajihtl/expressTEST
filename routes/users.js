@@ -1,6 +1,8 @@
+
 var express = require('express');
 const studentModel = require('../models/student');
 var router = express.Router();
+
 
 /* GET users listing. */
 router.post('/', function (req, res, next) {
@@ -87,6 +89,19 @@ router.put("/addNote/twin", async (req, res) => {
     console.log(error)
   }
 })
+router.delete('/delete/age', async (req, res) => {
+  try {
+    const student = await studentModel.deleteMany({ age: { $lt: 18 } }).exec()
+    res.send("student deleted")
+  } catch (error) {
+    console.log(error)
+  }
+
+})
+
+
+
+
 
 
 

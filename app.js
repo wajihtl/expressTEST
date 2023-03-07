@@ -1,3 +1,5 @@
+
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -6,6 +8,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const mongoose = require("mongoose");
+
 
 const getConnections = () => {
   mongoose
@@ -49,5 +52,10 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+/* const http = require('http').createServer(app);
+const io = require('socket.io')(http);
+ */
+
 
 module.exports = app;
